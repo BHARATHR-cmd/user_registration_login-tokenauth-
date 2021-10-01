@@ -15,8 +15,6 @@ class UserSerializers(serializers.ModelSerializer):
             password=validated_data['password'],
             last_login=validated_data['last_login'],
             is_superuser=validated_data['is_superuser'],
-            # first_name=validated_data['first_name'],
-            # last_name=validated_data['last_name'],
             use_r_name=validated_data['use_r_name'],
             is_staff=validated_data['is_staff'],
             is_active=validated_data['is_active'],
@@ -26,6 +24,8 @@ class UserSerializers(serializers.ModelSerializer):
             Country=validated_data['Country'],
             User_Type=validated_data['User_Type'],
             PhoneNumber=validated_data['PhoneNumber']
+            # first_name=validated_data['first_name'],
+            # last_name=validated_data['last_name'],
         )
         # Userobj = CustomUser.objects.create(**validated_data)
         Userobj.set_password(validated_data['password'])
@@ -40,10 +40,7 @@ class UserSerializers(serializers.ModelSerializer):
             'last_login', instance.last_login)
         instance.is_superuser = validated_data.get(
             'is_superuser', instance.is_superuser)
-        # instance.first_name = validated_data.get(
-        #     'first_name', instance.first_name)
-        # instance.last_name = validated_data.get(
-        #     'last_name', instance.last_name)
+
         instance.use_r_name = validated_data.get(
             'use_r_name', instance.use_r_name)
 
@@ -61,6 +58,10 @@ class UserSerializers(serializers.ModelSerializer):
             'User_Type', instance.User_Type)
         instance.PhoneNumber = validated_data.get(
             'PhoneNumber', instance.PhoneNumber)
+        # instance.first_name = validated_data.get(
+        #     'first_name', instance.first_name)
+        # instance.last_name = validated_data.get(
+        #     'last_name', instance.last_name)
         instance.set_password(validated_data['password'])
         instance.save()
         return instance
